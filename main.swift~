@@ -1,0 +1,31 @@
+var strings: [String] = []
+
+while let line = readLine() {
+    unsortedStrings.append(line)
+}
+
+var passSwapCount = 0
+
+func swap(strings:inout [String], firstIndex:Int, secondIndex:Int) {
+    let temp = strings[firstIndex]
+    strings[firstIndex] = strings[secondIndex]
+    strings[secondIndex] = temp
+}
+
+repeat {
+    passSwapCount = 0
+    var prev = ""
+    for i in 0 ..< strings.count {
+        if i != 0 {
+            if prev > strings[i] {
+                swap(strings: &strings, firstIndex: i-1, secondIndex: i)
+                passSwapCount += 1
+            }
+        }
+        prev = strings[i]
+    }
+} while passSwapCount != 0
+
+for str in strings {
+    print(str)
+}

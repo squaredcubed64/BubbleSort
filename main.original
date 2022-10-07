@@ -1,0 +1,51 @@
+
+
+// ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩
+// DO NOT ALTER THE TEXT BETWEEN THESE LINES =========={M{E{R{L{I{N{1}N}I}L}R}E}M}=====================================
+let unsortedStrings = ["a","b","d","c"]
+// DO NOT ALTER THE TEXT BETWEEN THESE LINES =========={M{E{R{L{I{N{1}N}I}L}R}E}M}=====================================
+// ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧
+
+
+// Add your code below:
+func swap(integers:inout [String], firstIndex:Int, secondIndex:Int) {
+    let temp = integers[firstIndex]
+    integers[firstIndex] = integers[secondIndex]
+    integers[secondIndex] = temp
+}
+
+func prettify(integers: [String]) -> String {
+    var prettyIntegers = "["
+    for i in 0 ..< integers.count {
+        if i != 0 {
+            prettyIntegers += ", "
+        }
+        prettyIntegers += String(integers[i])
+    }
+    prettyIntegers += "]"
+    return prettyIntegers
+}
+
+var pass = 0
+var passSwapCount = 0
+var totalSwapCount = 0
+var integers = unsortedIntegers
+
+repeat {
+    let prettyIntegers = prettify(integers:integers)
+    print("Pass: \(pass), Swaps: \(passSwapCount)/\(totalSwapCount), Array: \(prettyIntegers)")
+    var prev = 0
+    passSwapCount = 0
+    for i in 0 ..< integers.count {
+        if i != 0 && prev > integers[i] {
+            swap(integers: &integers, firstIndex: i-1, secondIndex: i)
+            passSwapCount += 1
+            totalSwapCount += 1
+        }
+        prev = integers[i]
+    }
+    pass += 1
+} while passSwapCount != 0
+
+let prettyIntegers = prettify(integers:integers)
+print("Pass: \(pass), Swaps: \(passSwapCount)/\(totalSwapCount), Array: \(prettyIntegers)")
